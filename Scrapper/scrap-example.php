@@ -12,8 +12,8 @@
 <?php
 include('simplehtmldom_1_9_1/simple_html_dom.php');
 
-$wiki = "https://www.kompas.com/tag/portal";
-$html = file_get_html($wiki);
+$pokemon_table = "https://pokemondb.net/pokedex/all";
+$html = file_get_html($pokemon_table);
 
 $article = $html->find('div[class=article__list clearfix]');
 
