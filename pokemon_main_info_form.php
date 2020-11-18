@@ -13,18 +13,21 @@
 <form method="POST" action="process_input.php">
     <div class="form-section">
         <div class = "form-title">MAIN INFORMATION</div>
+        <input name="national_no" type="text" placeholder="NATIONAL NO">
         <input name="name" type="text" placeholder="NAME">
         <input name="type" type="text" placeholder="TYPE">
         <input name="species" type="text" placeholder="SPECIES">
         <input name="height" type="number" placeholder="HEIGHT">
         <input name="weight" type="number" placeholder="WEIGHT">
-        <input name="attack" type="text" placeholder="ATTACK">
+        <input name="abilities" type="text" placeholder="ABILITY">
         <input name="health_point" type="number" placeholder="HP">
+        <input name="attack" type="number" placeholder="ATTACK">
+        <input name="defense" type="number" placeholder="DEFENSE">
         <input name="speed" type="number" placeholder="SPEED">
         <input name="speed_attack" type="number" placeholder="ATTACK SPEED">
         <input name="speed_defense" type="number" placeholder="DEFENSE SPEED">
     </div>
-    <input type="submit" value="input pokemon">
+    <input type="submit" name="insert_main" value="input pokemon">
 </form>
 
 </body>
