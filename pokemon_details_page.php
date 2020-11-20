@@ -9,8 +9,12 @@ require_once './functions/config.php';
 
     $id = $_GET["id"];
 
+    $ability_count = mysqli_query($db,
+    "SELECT count(abilities.id) as ability_count 
+                                FROM abilities 
+                                where national_no = {$id};");
     $base_stats_query = mysqli_query($db, "SELECT * FROM pokemon WHERE national_no='$id'");
-    $moves_query = mysqli_query($db, "SELECT * FROM moves;");
+    $moves_query = mysqli_query($db, "SELECT * FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = ;");
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
     $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
     $breeding_query = mysqli_query($db, "SELECT * FROM breeding;");
@@ -47,6 +51,10 @@ Details of Pokemon
             <div class="info-row">
                 <div class="info-key"> Species</div>
                 <div class="info-value"><?= $record["Species"]?></div>
+            </div>
+            <div class="info-row">
+                <div class="info-key"> Ability Count</div>
+                <div class="info-value"><?=$ability_count["ability_count"] ?></div>
             </div>
         <?php endwhile;?>
     </div>
