@@ -143,6 +143,7 @@ Details of Pokemon
             <?php
             while($record = mysqli_fetch_assoc($breeding_query)) {
                 breedingDataRow(
+                    $record["B_ID"],
                     $record["Egg_Groups"],
                     $record["Gender"],
                     $record["Egg_Cycles"]
@@ -171,6 +172,7 @@ Details of Pokemon
             <?php
             while($record = mysqli_fetch_assoc($training_query)) {
                 trainingDataRow(
+                    $record["T_ID"],
                     $record["Ev_Yield"],
                     $record["Catch_Rate"],
                     $record["Base_Friendship"],

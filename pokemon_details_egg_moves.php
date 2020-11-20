@@ -4,7 +4,8 @@ function eggMoveInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="egg_move_process.php">
-            <td><input type = hidden name = "pokemon_id" value = '.$_GET["id"].'></td>
+            <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'>
+                <td><input name="id" type=number ></td>
                 <td><input name="name" type=text ></td>
                 <td><input name="type" type=text ></td>
                 <td><input name="cat" type=text ></td>
