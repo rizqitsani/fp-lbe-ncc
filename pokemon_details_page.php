@@ -1,8 +1,13 @@
 <?php
-include('pokemon_details_moves.php');
-include('pokemon_detail_egg_moves.php');
+    include('pokemon_details_moves.php');
+    include('pokemon_detail_egg_moves.php');
+
+    require_once './functions/config.php';
+
+    $query_result = mysqli_query($db, "SELECT * FROM moves;");
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -49,16 +54,20 @@ Details of Pokemon
             <td> Action</td>
             </thead>
             <tbody>
-            <?php moveDataRow(
-                123,
-                "ini nama",
-                "ini tipe",
-                "ini category",
-                2222,
-                300000,
-                20202020,
-                "ini effect"
-            ); ?>
+            <?php
+                while($record = mysqli_fetch_assoc($query_result)) {
+                    moveDataRow(
+                        $record["ID"],
+                        $record["Name"],
+                        $record["Type"],
+                        $record["Cat"],
+                        $record["Power"],
+                        $record["Acc"],
+                        $record["Pp"],
+                        $record["Effect"]
+                    );
+                }
+            ?>
             <?php moveInputRow(); ?>
 
             </tbody>

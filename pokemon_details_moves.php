@@ -12,7 +12,7 @@ function moveInputRow()
                 <td><input name="acc" type=number></td>
                 <td><input name="pp" type=number ></td>
                 <td><input name="effect" type=text ></td>
-                <td><input type=submit name="submit-button" id="add" value=""></td>
+                <td><input type=submit name="add-button" id="add" value=""></td>
             </form>
         </tr>
     ';
@@ -40,8 +40,8 @@ function moveDataRow(
             <td><input name="acc" type=number value=' . $acc . '></td>
             <td><input name="pp" type=number value=' . $pp . '></td>
             <td><input name="effect" type=text value="' . $effect . '"></td>
-            <td><input type=submit name="submit-button" id="edit" value="edit"></td>
-            <td><input type=submit name="submit-button" id="delete" value="delete"></td>
+            <td><input type=submit name="edit-button" id="edit" value="edit"></td>
+            <td><input type=submit name="delete-button" id="delete" value="delete"></td>
         </form>
     </tr>
             ';
