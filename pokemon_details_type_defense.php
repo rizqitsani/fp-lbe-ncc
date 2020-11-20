@@ -29,5 +29,5 @@ function typeDefenseDataRow(
             <td><input type=submit name="delete-button" id="delete" value="delete"></td>
         </form>
     </tr>
-            ';
+    ';
 }
