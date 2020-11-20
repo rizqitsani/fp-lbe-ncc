@@ -24,7 +24,7 @@ function breedingDataRow(
     echo '
     <tr>
         <form class="info-form" method="POST" action="breeding_process.php?id='.$id.'">
-            <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'
+            <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'>
             <td>' . $id . '</td>
             <td><input name="egg_groups" type=text value="' . $egg_groups . '"></td>
             <td><input name="gender" type=text value="' . $gender . '"></td>
