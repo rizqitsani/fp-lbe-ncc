@@ -94,6 +94,15 @@ CREATE TABLE `pokemon` (
 
 INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`, `Weight`, `Abilities`, `Health_Point`, `Attack`, `Defense`, `Speed`, `Speed_Attack`, `Speed_Defense`) VALUES
 (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--INSERT INTO 'pokemon' VALUES (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
+--
 
 -- --------------------------------------------------------
 
@@ -112,6 +121,12 @@ CREATE TABLE `training` (
 -- --------------------------------------------------------
 
 --
+-- Add to Training_ID
+--
+ALTER TABLE 'training' 
+ADD T_ID VARCHAR(10) NOT NULL PRIMARY KEY;
+
+--
 -- Table structure for table `type_defense`
 --
 
@@ -120,6 +135,8 @@ CREATE TABLE `type_defense` (
   `Power` varchar(60) NOT NULL,
   `Point` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 --
 -- Indexes for dumped tables
@@ -143,6 +160,11 @@ ALTER TABLE `pokemon`
 --
 ALTER TABLE `type_defense`
   ADD PRIMARY KEY (`ID`);
+--
+-- Add to BREEDINGg_ID
+--
+ALTER TABLE 'breeding' 
+ADD B_ID VARCHAR(10) NOT NULL PRIMARY KEY;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -160,6 +182,7 @@ ALTER TABLE `pokemon`
 ALTER TABLE `type_defense`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
