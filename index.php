@@ -1,6 +1,14 @@
 <?php
 require_once './functions/config.php';
-$pokemon_query = mysqli_query($db, "SELECT * FROM pokemon;");
+
+// Searching
+if(isset($_GET["search"])) {
+    $keyword = $_GET["search"];
+    $keyword = mysqli_real_escape_string($db, $keyword);
+    $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon WHERE name LIKE '%$keyword%' ORDER BY national_no;");
+} else{
+    $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon;");
+}
 
 function pokemonDataRow(
     $id,
@@ -9,9 +17,10 @@ function pokemonDataRow(
     $species,
     $height,
     $weight,
-    $chenges,
-    $attack,
+    $abilities,
     $health_point,
+    $attack,
+    $defense,
     $speed,
     $speed_attack,
     $speed_defense
@@ -25,9 +34,10 @@ function pokemonDataRow(
                 <td> {$species} </td>
                 <td>{$height} </td>
                 <td>{$weight }</td>
-                <td>{$chenges} </td>
-                <td>{$attack} </td>
+                <td>{$abilities} </td>
                 <td>{$health_point} </td>
+                <td>{$attack} </td>
+                <td>{$defense} </td>
                 <td>{$speed} </td>
                 <td>{$speed_attack }</td>
                 <td>{$speed_defense}</td>
@@ -55,15 +65,16 @@ POKEMONS
 
 <table>
     <thead>
-    <td> ID</td>
+    <td> National NO</td>
     <td> Name</td>
     <td> Type</td>
     <td> Species</td>
     <td> Height</td>
     <td> Weight</td>
-    <td> Chenges</td>
-    <td> Attack</td>
+    <td> Abilities</td>
     <td> Health Point</td>
+    <td> Attack</td>
+    <td> Defense</td>
     <td> Speed</td>
     <td> Attack Speed</td>
     <td> Defense Speed</td>
@@ -73,30 +84,32 @@ POKEMONS
     <?php
     while ($record = mysqli_fetch_assoc($pokemon_query)) {
         pokemonDataRow(
-            $record["Id"],
-            $record["Nama"],
+            $record["National_No"],
+            $record["Name"],
             $record["Type"],
             $record["Species"],
             $record["Height"],
             $record["Weight"],
-            $record["Chenges"],
-            $record["Attack"],
+            $record["Abilities"],
             $record["Health_Point"],
+            $record["Attack"],
+            $record["Defense"],
             $record["Speed"],
             $record["Speed_Attack"],
             $record["Speed_Defense"]
         );
     }
     pokemonDataRow(
-        "Id",
-        "Nama",
+        "National NO",
+        "Name",
         "Type",
         "Species",
         "Height",
         "Weight",
-        "Chenges",
-        "Attack",
+        "Abilities",
         "Health_Point",
+        "Attack",
+        "Defense",
         "Speed",
         "Speed_Attack",
         "Speed_Defense"
