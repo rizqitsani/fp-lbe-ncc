@@ -3,7 +3,7 @@ require_once './functions/config.php';
 
 // Searching
 if(isset($_GET["search"])) {
-    $keyword = $_GET["search"];
+    $keyword = $_POST["keyword"];
     $keyword = mysqli_real_escape_string($db, $keyword);
     $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon WHERE name LIKE '%$keyword%' ORDER BY national_no;");
 } else{
@@ -63,6 +63,11 @@ function pokemonDataRow(
 <body class="main_page">
 POKEMONS
 
+<form method = "POST" action="index.php">
+    <input type="text" name = "keyword" placeholder = "Search Name">
+    <input type = "submit" name = "search" value = "Search">
+</form>
+
 <table>
     <thead>
     <td> National NO</td>
@@ -99,21 +104,6 @@ POKEMONS
             $record["Speed_Defense"]
         );
     }
-    pokemonDataRow(
-        "National NO",
-        "Name",
-        "Type",
-        "Species",
-        "Height",
-        "Weight",
-        "Abilities",
-        "Health_Point",
-        "Attack",
-        "Defense",
-        "Speed",
-        "Speed_Attack",
-        "Speed_Defense"
-    );
     ?>
 
     </tbody>

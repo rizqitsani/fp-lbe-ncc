@@ -37,13 +37,7 @@ Details of Pokemon
             <div class="info-key"> name</div>
             <div class="info-value"> ini nama</div>
         </div>
-        <div class="info-row">
-            <div class="info-key"> name</div>
-            <div class="info-value"> ini nama</div>
-        </div>
     </div>
-
-
 </div>
 
 <div class="details-info-section">
@@ -77,7 +71,6 @@ Details of Pokemon
                 }
             ?>
             <?php moveInputRow(); ?>
-
             </tbody>
         </table>
     </div>
