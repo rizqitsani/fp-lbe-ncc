@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2020 pada 15.28
+-- Waktu pembuatan: 20 Nov 2020 pada 15.50
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -31,7 +31,8 @@ CREATE TABLE `breeding` (
   `B_ID` int(11) NOT NULL,
   `Egg_Groups` varchar(250) NOT NULL,
   `Gender` varchar(60) NOT NULL,
-  `Egg_Cycles` varchar(55) NOT NULL
+  `Egg_Cycles` varchar(55) NOT NULL,
+  `Pokemon_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,7 +47,8 @@ CREATE TABLE `egg_moves` (
   `Type` varchar(60) NOT NULL,
   `Cat` varchar(40) NOT NULL,
   `Power` int(11) NOT NULL,
-  `Acc` int(11) NOT NULL
+  `Acc` int(11) NOT NULL,
+  `Pokemon_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -63,7 +65,8 @@ CREATE TABLE `moves` (
   `Power` int(11) NOT NULL,
   `Acc` int(11) NOT NULL,
   `Pp` int(11) NOT NULL,
-  `Effect` varchar(512) NOT NULL
+  `Effect` varchar(512) NOT NULL,
+  `Pokemon_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -112,7 +115,8 @@ CREATE TABLE `training` (
   `Catch_Rate` varchar(55) NOT NULL,
   `Base_Friendship` varchar(55) NOT NULL,
   `Base_Exp` int(11) NOT NULL,
-  `Growth_Rate` varchar(55) NOT NULL
+  `Growth_Rate` varchar(55) NOT NULL,
+  `Pokemon_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,7 +128,8 @@ CREATE TABLE `training` (
 CREATE TABLE `type_defense` (
   `ID` int(11) NOT NULL,
   `Power` varchar(60) NOT NULL,
-  `Point` float NOT NULL
+  `Point` float NOT NULL,
+  `Pokemon_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -135,19 +140,22 @@ CREATE TABLE `type_defense` (
 -- Indeks untuk tabel `breeding`
 --
 ALTER TABLE `breeding`
-  ADD PRIMARY KEY (`B_ID`);
+  ADD PRIMARY KEY (`B_ID`),
+  ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
 -- Indeks untuk tabel `egg_moves`
 --
 ALTER TABLE `egg_moves`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
 -- Indeks untuk tabel `moves`
 --
 ALTER TABLE `moves`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
 -- Indeks untuk tabel `pokemon`
@@ -160,13 +168,15 @@ ALTER TABLE `pokemon`
 -- Indeks untuk tabel `training`
 --
 ALTER TABLE `training`
-  ADD PRIMARY KEY (`T_ID`);
+  ADD PRIMARY KEY (`T_ID`),
+  ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
 -- Indeks untuk tabel `type_defense`
 --
 ALTER TABLE `type_defense`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -183,6 +193,40 @@ ALTER TABLE `breeding`
 --
 ALTER TABLE `training`
   MODIFY `T_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `breeding`
+--
+ALTER TABLE `breeding`
+  ADD CONSTRAINT `breeding_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
+
+--
+-- Ketidakleluasaan untuk tabel `egg_moves`
+--
+ALTER TABLE `egg_moves`
+  ADD CONSTRAINT `egg_moves_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
+
+--
+-- Ketidakleluasaan untuk tabel `moves`
+--
+ALTER TABLE `moves`
+  ADD CONSTRAINT `moves_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
+
+--
+-- Ketidakleluasaan untuk tabel `training`
+--
+ALTER TABLE `training`
+  ADD CONSTRAINT `training_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
+
+--
+-- Ketidakleluasaan untuk tabel `type_defense`
+--
+ALTER TABLE `type_defense`
+  ADD CONSTRAINT `type_defense_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
