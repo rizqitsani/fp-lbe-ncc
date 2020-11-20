@@ -9,14 +9,14 @@ require_once './functions/config.php';
 
     $id = $_GET["id"];
 
-    $ability_count = mysqli_query($db,
-    "SELECT count(abilities.id) as ability_count 
-                                FROM abilities 
-                                where national_no = {$id};");
+    $moves_count = mysqli_query($db,
+    "SELECT count(moves.ID) as moves_count 
+                                FROM moves 
+                                where pokemon_id = {$id};");
+
     $base_stats_query = mysqli_query($db, "SELECT * FROM pokemon WHERE national_no='$id'");
     $moves_query = mysqli_query($db, "SELECT * FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = '$id' ;");
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves WHERE pokemon_id='$id';");
-    $ability_query = mysqli_query($db, "SELECT * FROM abilities WHERE pokemon_id='$id';");
     $breeding_query = mysqli_query($db, "SELECT * FROM breeding WHERE pokemon_id='$id';");
     $training_query = mysqli_query($db, "SELECT * FROM training WHERE pokemon_id='$id';");
     $type_defense_query = mysqli_query($db, "SELECT * FROM type_defense WHERE pokemon_id='$id';");
@@ -53,8 +53,8 @@ Details of Pokemon
                 <div class="info-value"><?= $record["Species"]?></div>
             </div>
             <div class="info-row">
-                <div class="info-key"> Ability Count</div>
-                <div class="info-value"><?=$ability_count["ability_count"] ?></div>
+                <div class="info-key"> Moves Count</div>
+                <div class="info-value"><?=mysqli_fetch_assoc($moves_count)["moves_count"] ?></div>
             </div>
         <?php endwhile;?>
     </div>
