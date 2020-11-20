@@ -1,13 +1,15 @@
 <?php
     include('pokemon_details_moves.php');
-    include('pokemon_detail_egg_moves.php');
-    include('pokemon_details_abilities.php');
+    include('pokemon_details_egg_moves.php');
     include('pokemon_details_breeding.php');
     include('pokemon_details_training.php');
     include('pokemon_details_type_defense.php');
 
 require_once './functions/config.php';
 
+    $id = $_GET["id"];
+
+    $base_stats_query = mysqli_query($db, "SELECT * FROM pokemon WHERE national_no='$id'");
     $moves_query = mysqli_query($db, "SELECT * FROM moves;");
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
     $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
@@ -33,10 +35,20 @@ Details of Pokemon
 <div class="main-info-section">
     <div class="info-wrapper">
         <div class="title"> BASE STATS</div>
-        <div class="info-row">
-            <div class="info-key"> name</div>
-            <div class="info-value"> ini nama</div>
-        </div>
+        <?php while($record = mysqli_fetch_assoc($base_stats_query)):?>
+            <div class="info-row">
+                <div class="info-key"> Name</div>
+                <div class="info-value"><?= $record["Name"]?></div>
+            </div>
+            <div class="info-row">
+                <div class="info-key"> Type</div>
+                <div class="info-value"><?= $record["Type"]?></div>
+            </div>
+            <div class="info-row">
+                <div class="info-key"> Species</div>
+                <div class="info-value"><?= $record["Species"]?></div>
+            </div>
+        <?php endwhile;?>
     </div>
 </div>
 
@@ -103,31 +115,6 @@ Details of Pokemon
                 }
             ?>
             <?php eggMoveInputRow(); ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="details-info-section">
-    ABILITIES
-    <div class="wrapper">
-        <table>
-            <thead>
-            <td> ID</td>
-            <td> Name</td>
-            <td> Effect</td>
-            </thead>
-            <tbody>
-            <?php
-            while($record = mysqli_fetch_assoc($ability_query)) {
-                abilityDataRow(
-                    $record["ID"],
-                    $record["Move"],
-                    $record["effect"]
-                );
-            }
-            ?>
-            <?php abilitiyInputRow(); ?>
             </tbody>
         </table>
     </div>

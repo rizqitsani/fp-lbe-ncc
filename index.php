@@ -2,7 +2,7 @@
 require_once './functions/config.php';
 
 // Searching
-if(isset($_GET["search"])) {
+if(isset($_POST["search"])) {
     $keyword = $_POST["keyword"];
     $keyword = mysqli_real_escape_string($db, $keyword);
     $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon WHERE name LIKE '%$keyword%' ORDER BY national_no;");
