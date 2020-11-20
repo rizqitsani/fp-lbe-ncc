@@ -4,7 +4,7 @@ function trainingInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="training_process.php">
-                <td></td>
+                <td></td><input type = hidden name = "pokemon_id" value = '.$_GET["id"].'>
                 <td><input name="ev_yield" type=text></td>
                 <td><input name="catch_rate" type=text ></td>
                 <td><input name="base_friendship" type=text ></td>
@@ -28,6 +28,7 @@ function trainingDataRow(
     echo '
     <tr>
         <form class="info-form" method="POST" action="training_process.php?id='.$id.'">
+            <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'>
             <td>' . $id . '</td>
             <td><input name="ev_yield" type=text value="' . $ev_yield . '"></td>
             <td><input name="catch_rate" type=text value="' . $catch_rate . '"></td>

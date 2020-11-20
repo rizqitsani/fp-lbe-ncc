@@ -137,6 +137,7 @@ Details of Pokemon
             <td> Egg Groups</td>
             <td> Gender</td>
             <td> Egg Cycles</td>
+            <td colspan="2"> actions</td>
             </thead>
             <tbody>
             <?php
