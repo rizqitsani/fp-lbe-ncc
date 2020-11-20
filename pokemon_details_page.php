@@ -3,6 +3,7 @@
     include('pokemon_detail_egg_moves.php');
     include('pokemon_details_abilities.php');
     include('pokemon_details_breeding.php');
+    include('pokemon_details_training.php');
 
 require_once './functions/config.php';
 
@@ -10,6 +11,7 @@ require_once './functions/config.php';
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
     $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
     $breeding_query = mysqli_query($db, "SELECT * FROM breeding;");
+    $training_query = mysqli_query($db, "SELECT * FROM training;");
 ?>
 
 <!doctype html>
@@ -141,9 +143,9 @@ Details of Pokemon
     <div class="wrapper">
         <table>
             <thead>
-            <td> ID</td>
-            <td> Name</td>
-            <td> Effect</td>
+            <td> Egg Groups</td>
+            <td> Gender</td>
+            <td> Egg Cycles</td>
             </thead>
             <tbody>
             <?php
@@ -161,6 +163,34 @@ Details of Pokemon
     </div>
 </div>
 
+<div class="details-info-section">
+    Training
+    <div class="wrapper">
+        <table>
+            <thead>
+            <td> Ev_Yield</td>
+            <td> Catch_Rate</td>
+            <td> Base_Friendship</td>
+            <td> Base_Exp</td>
+            <td> Growth_Rate</td>
+            </thead>
+            <tbody>
+            <?php
+            while($record = mysqli_fetch_assoc($training_query)) {
+                trainingDataRow(
+                    $record["Ev_Yield"],
+                    $record["Catch_Rate"],
+                    $record["Base_Friendship"],
+                    $record["Base_Exp"],
+                    $record["Growth_Rate"],
+                );
+            }
+            ?>
+            <?php trainingInputRow(); ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>
