@@ -10,11 +10,8 @@
       $cat = htmlspecialchars($_POST["cat"]);
       $power = htmlspecialchars($_POST["power"]);
       $acc = htmlspecialchars($_POST["acc"]);
-      $pp = htmlspecialchars($_POST["pp"]);
-      $effect = htmlspecialchars($_POST["effect"]);
 
-      mysqli_query($db, "INSERT INTO moves VALUES ('$id', '$name', '$type', '$cat', '$power', '$acc', '$pp'
-      , '$effect') ;");
+      mysqli_query($db, "INSERT INTO egg_moves VALUES ('$id', '$name', '$type', '$cat', '$power', '$acc') ;");
 
       // Redirect
       if(mysqli_affected_rows($db)){
@@ -32,10 +29,8 @@
     $cat = htmlspecialchars($_POST["cat"]);
     $power = htmlspecialchars($_POST["power"]);
     $acc = htmlspecialchars($_POST["acc"]);
-    $pp = htmlspecialchars($_POST["pp"]);
-    $effect = htmlspecialchars($_POST["effect"]);
     
-    mysqli_query($db, "UPDATE moves SET name='$name', type='$type', cat='$cat', power='$power', acc='$acc', pp='$pp', effect='$effect' WHERE id='$id';");
+    mysqli_query($db, "UPDATE egg_moves SET move='$name', type='$type', cat='$cat', power='$power', acc='$acc' WHERE id='$id';");
 
     header('Location: ./pokemon_details_page.php');
     
@@ -44,7 +39,7 @@
   if(isset($_POST['delete-button'])) {
     
     $id = $_GET["id"];
-    mysqli_query($db, "DELETE FROM moves WHERE id = '$id';");
+    mysqli_query($db, "DELETE FROM egg_moves WHERE id = '$id';");
     
     header('Location: ./pokemon_details_page.php');
 

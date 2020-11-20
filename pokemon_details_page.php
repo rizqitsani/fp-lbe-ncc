@@ -4,7 +4,8 @@
 
     require_once './functions/config.php';
 
-    $query_result = mysqli_query($db, "SELECT * FROM moves;");
+    $moves_query = mysqli_query($db, "SELECT * FROM moves;");
+    $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
 
 ?>
 
@@ -55,7 +56,7 @@ Details of Pokemon
             </thead>
             <tbody>
             <?php
-                while($record = mysqli_fetch_assoc($query_result)) {
+                while($record = mysqli_fetch_assoc($moves_query)) {
                     moveDataRow(
                         $record["ID"],
                         $record["Name"],
@@ -89,14 +90,18 @@ Details of Pokemon
             <td> Action</td>
             </thead>
             <tbody>
-            <?php eggMoveDataRow(
-                321,
-                "ini nama",
-                "ini tipe",
-                "ini category",
-                3232,
-                303030
-            ); ?>
+            <?php
+                while($record = mysqli_fetch_assoc($egg_moves_query)) {
+                    eggMoveDataRow(
+                        $record["ID"],
+                        $record["Move"],
+                        $record["Type"],
+                        $record["Cat"],
+                        $record["Power"],
+                        $record["Acc"]
+                    );
+                }
+            ?>
             <?php eggMoveInputRow(); ?>
             </tbody>
         </table>
