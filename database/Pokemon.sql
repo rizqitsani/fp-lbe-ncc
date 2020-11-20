@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2020 at 10:10 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Waktu pembuatan: 20 Nov 2020 pada 14.51
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lbe_ncc`
+-- Database: `pokemon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `breeding`
+-- Struktur dari tabel `breeding`
 --
 
 CREATE TABLE `breeding` (
   `Egg_Groups` varchar(250) NOT NULL,
   `Gender` varchar(60) NOT NULL,
-  `Egg_Cycles` varchar(55) NOT NULL
+  `Egg_Cycles` varchar(55) NOT NULL,
+  `B_ID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `egg_moves`
+-- Struktur dari tabel `egg_moves`
 --
 
 CREATE TABLE `egg_moves` (
@@ -51,7 +52,7 @@ CREATE TABLE `egg_moves` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `moves`
+-- Struktur dari tabel `moves`
 --
 
 CREATE TABLE `moves` (
@@ -68,7 +69,7 @@ CREATE TABLE `moves` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pokemon`
+-- Struktur dari tabel `pokemon`
 --
 
 CREATE TABLE `pokemon` (
@@ -89,17 +90,16 @@ CREATE TABLE `pokemon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pokemon`
+-- Dumping data untuk tabel `pokemon`
 --
 
 INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`, `Weight`, `Abilities`, `Health_Point`, `Attack`, `Defense`, `Speed`, `Speed_Attack`, `Speed_Defense`) VALUES
 (1, '001', 'Bulbasaur', 'Grass', 'Seed Pokemon', '1', '6', 'Overgrow', 45, 49, 49, 45, 65, 65);
 
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `training`
+-- Struktur dari tabel `training`
 --
 
 CREATE TABLE `training` (
@@ -107,17 +107,14 @@ CREATE TABLE `training` (
   `Catch_Rate` varchar(55) NOT NULL,
   `Base_Friendship` varchar(55) NOT NULL,
   `Base_Exp` int(11) NOT NULL,
-  `Growth_Rate` varchar(55) NOT NULL
+  `Growth_Rate` varchar(55) NOT NULL,
+  `T_ID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Add to Training_ID
---
-
---
--- Table structure for table `type_defense`
+-- Struktur dari tabel `type_defense`
 --
 
 CREATE TABLE `type_defense` (
@@ -126,51 +123,41 @@ CREATE TABLE `type_defense` (
   `Point` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `moves`
+-- Indeks untuk tabel `breeding`
+--
+ALTER TABLE `breeding`
+  ADD PRIMARY KEY (`B_ID`);
+
+--
+-- Indeks untuk tabel `moves`
 --
 ALTER TABLE `moves`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `pokemon`
+-- Indeks untuk tabel `pokemon`
 --
 ALTER TABLE `pokemon`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Id` (`ID`);
 
 --
--- Indexes for table `type_defense`
+-- Indeks untuk tabel `training`
+--
+ALTER TABLE `training`
+  ADD PRIMARY KEY (`T_ID`);
+
+--
+-- Indeks untuk tabel `type_defense`
 --
 ALTER TABLE `type_defense`
   ADD PRIMARY KEY (`ID`);
---
--- Add to BREEDINGg_ID
---
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `pokemon`
---
-ALTER TABLE `pokemon`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `type_defense`
---
-ALTER TABLE `type_defense`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
