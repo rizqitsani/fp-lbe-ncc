@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2020 pada 15.50
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.7
+-- Generation Time: Nov 20, 2020 at 05:37 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `breeding`
+-- Table structure for table `breeding`
 --
 
 CREATE TABLE `breeding` (
@@ -38,7 +38,7 @@ CREATE TABLE `breeding` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `egg_moves`
+-- Table structure for table `egg_moves`
 --
 
 CREATE TABLE `egg_moves` (
@@ -54,7 +54,7 @@ CREATE TABLE `egg_moves` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `moves`
+-- Table structure for table `moves`
 --
 
 CREATE TABLE `moves` (
@@ -72,7 +72,7 @@ CREATE TABLE `moves` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pokemon`
+-- Table structure for table `pokemon`
 --
 
 CREATE TABLE `pokemon` (
@@ -93,7 +93,7 @@ CREATE TABLE `pokemon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pokemon`
+-- Dumping data for table `pokemon`
 --
 
 INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`, `Weight`, `Abilities`, `Health_Point`, `Attack`, `Defense`, `Speed`, `Speed_Attack`, `Speed_Defense`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `training`
+-- Table structure for table `training`
 --
 
 CREATE TABLE `training` (
@@ -122,7 +122,7 @@ CREATE TABLE `training` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `type_defense`
+-- Table structure for table `type_defense`
 --
 
 CREATE TABLE `type_defense` (
@@ -137,93 +137,111 @@ CREATE TABLE `type_defense` (
 --
 
 --
--- Indeks untuk tabel `breeding`
+-- Indexes for table `breeding`
 --
 ALTER TABLE `breeding`
   ADD PRIMARY KEY (`B_ID`),
   ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
--- Indeks untuk tabel `egg_moves`
+-- Indexes for table `egg_moves`
 --
 ALTER TABLE `egg_moves`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
--- Indeks untuk tabel `moves`
+-- Indexes for table `moves`
 --
 ALTER TABLE `moves`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
--- Indeks untuk tabel `pokemon`
+-- Indexes for table `pokemon`
 --
 ALTER TABLE `pokemon`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Id` (`ID`);
 
 --
--- Indeks untuk tabel `training`
+-- Indexes for table `training`
 --
 ALTER TABLE `training`
   ADD PRIMARY KEY (`T_ID`),
   ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
--- Indeks untuk tabel `type_defense`
+-- Indexes for table `type_defense`
 --
 ALTER TABLE `type_defense`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Pokemon_id` (`Pokemon_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `breeding`
+-- AUTO_INCREMENT for table `breeding`
 --
 ALTER TABLE `breeding`
   MODIFY `B_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `training`
+-- AUTO_INCREMENT for table `egg_moves`
+--
+ALTER TABLE `egg_moves`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `moves`
+--
+ALTER TABLE `moves`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `training`
 --
 ALTER TABLE `training`
   MODIFY `T_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `type_defense`
+--
+ALTER TABLE `type_defense`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `breeding`
+-- Constraints for table `breeding`
 --
 ALTER TABLE `breeding`
   ADD CONSTRAINT `breeding_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
 
 --
--- Ketidakleluasaan untuk tabel `egg_moves`
+-- Constraints for table `egg_moves`
 --
 ALTER TABLE `egg_moves`
   ADD CONSTRAINT `egg_moves_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
 
 --
--- Ketidakleluasaan untuk tabel `moves`
+-- Constraints for table `moves`
 --
 ALTER TABLE `moves`
   ADD CONSTRAINT `moves_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
 
 --
--- Ketidakleluasaan untuk tabel `training`
+-- Constraints for table `training`
 --
 ALTER TABLE `training`
   ADD CONSTRAINT `training_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
 
 --
--- Ketidakleluasaan untuk tabel `type_defense`
+-- Constraints for table `type_defense`
 --
 ALTER TABLE `type_defense`
   ADD CONSTRAINT `type_defense_ibfk_1` FOREIGN KEY (`Pokemon_id`) REFERENCES `pokemon` (`ID`);
