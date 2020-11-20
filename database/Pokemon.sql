@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2020 pada 15.26
+-- Waktu pembuatan: 20 Nov 2020 pada 15.28
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -20,6 +20,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `lbe_ncc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `breeding`
+--
+
+CREATE TABLE `breeding` (
+  `B_ID` int(11) NOT NULL,
+  `Egg_Groups` varchar(250) NOT NULL,
+  `Gender` varchar(60) NOT NULL,
+  `Egg_Cycles` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `egg_moves`
+--
+
+CREATE TABLE `egg_moves` (
+  `ID` int(11) NOT NULL,
+  `Move` varchar(120) NOT NULL,
+  `Type` varchar(60) NOT NULL,
+  `Cat` varchar(40) NOT NULL,
+  `Power` int(11) NOT NULL,
+  `Acc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `moves`
+--
+
+CREATE TABLE `moves` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(25) NOT NULL,
+  `Type` varchar(60) NOT NULL,
+  `Cat` varchar(30) NOT NULL,
+  `Power` int(11) NOT NULL,
+  `Acc` int(11) NOT NULL,
+  `Pp` int(11) NOT NULL,
+  `Effect` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -55,9 +100,54 @@ INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`,
 (4, '004', 'Charmander', 'Fire', 'Lizard Pokemon', '0.6', '8.5', 'Blaze Solar Power', 39, 52, 43, 65, 60, 50),
 (5, '005', 'Charmeleon', 'Fire', 'Flame Pokemon', '1.1', '19', 'Blaze Solar Power', 58, 64, 58, 80, 80, 65);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `training`
+--
+
+CREATE TABLE `training` (
+  `T_ID` int(11) NOT NULL,
+  `Ev_Yield` varchar(120) NOT NULL,
+  `Catch_Rate` varchar(55) NOT NULL,
+  `Base_Friendship` varchar(55) NOT NULL,
+  `Base_Exp` int(11) NOT NULL,
+  `Growth_Rate` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `type_defense`
+--
+
+CREATE TABLE `type_defense` (
+  `ID` int(11) NOT NULL,
+  `Power` varchar(60) NOT NULL,
+  `Point` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `breeding`
+--
+ALTER TABLE `breeding`
+  ADD PRIMARY KEY (`B_ID`);
+
+--
+-- Indeks untuk tabel `egg_moves`
+--
+ALTER TABLE `egg_moves`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeks untuk tabel `moves`
+--
+ALTER TABLE `moves`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indeks untuk tabel `pokemon`
@@ -65,6 +155,34 @@ INSERT INTO `pokemon` (`ID`, `National_No`, `Name`, `Type`, `Species`, `Height`,
 ALTER TABLE `pokemon`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Id` (`ID`);
+
+--
+-- Indeks untuk tabel `training`
+--
+ALTER TABLE `training`
+  ADD PRIMARY KEY (`T_ID`);
+
+--
+-- Indeks untuk tabel `type_defense`
+--
+ALTER TABLE `type_defense`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `breeding`
+--
+ALTER TABLE `breeding`
+  MODIFY `B_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `training`
+--
+ALTER TABLE `training`
+  MODIFY `T_ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
