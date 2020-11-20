@@ -4,7 +4,7 @@ function breedingInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="breeding_process.php">
-                <td></td>
+                <td><input type = hidden name = "pokemon_id" value = '.$_GET["id"].'</td>
                 <td><input name="egg_groups" type=number ></td>
                 <td><input name="gender" type=text ></td>
                 <td><input name="egg_cycle" type=text ></td>
@@ -24,6 +24,7 @@ function breedingDataRow(
     echo '
     <tr>
         <form class="info-form" method="POST" action="breeding_process.php?id='.$id.'">
+            <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'
             <td>' . $id . '</td>
             <td><input name="egg_groups" type=text value="' . $egg_groups . '"></td>
             <td><input name="gender" type=text value="' . $gender . '"></td>
