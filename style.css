@@ -1,9 +1,10 @@
-.pokemon_main_information_form {
+body {
   background-color: #2c2f33;
   color: #7289da;
-  font-family: "Segoe UI", Georgia, Serif, serif;
+  font-family: Georgia, Serif, serif;
   text-align: center;
 }
+
 .pokemon_main_information_form form {
   align-content: center;
   text-align: center;
@@ -22,6 +23,7 @@
 }
 .pokemon_main_information_form form .form-section .form-title {
   margin-bottom: 20px;
+  font-weight: bold;
 }
 .pokemon_main_information_form form .form-section input {
   display: block;
@@ -32,6 +34,68 @@
 .pokemon_main_information_form form .form-section input ::placeholder {
   opacity: 0.75;
   color: red;
+}
+
+.pokemon_details_page .main-info-section {
+  margin-top: 20px;
+}
+.pokemon_details_page .main-info-section .info-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  width: 50%;
+  border: #99aab5 solid 1px;
+  padding: 20px;
+  border-radius: 20px;
+}
+.pokemon_details_page .main-info-section .info-wrapper .title {
+  margin-bottom: 10px;
+}
+.pokemon_details_page .main-info-section .info-wrapper .info-row {
+  display: flex;
+  justify-content: space-around;
+  transition: all 300ms;
+  padding: 10px;
+  border-radius: 10px;
+}
+.pokemon_details_page .main-info-section .info-wrapper .info-row:hover {
+  background-color: #7289da;
+  color: #2c2f33;
+}
+.pokemon_details_page .details-info-section {
+  margin-top: 50px;
+}
+.pokemon_details_page .details-info-section .wrapper {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pokemon_details_page .details-info-section .wrapper table, .pokemon_details_page .details-info-section .wrapper thead, .pokemon_details_page .details-info-section .wrapper tbody, .pokemon_details_page .details-info-section .wrapper td, .pokemon_details_page .details-info-section .wrapper tr {
+  border-collapse: collapse;
+  border: #7289da30 solid 1px;
+  padding: 10px;
+}
+.pokemon_details_page .details-info-section .wrapper input {
+  width: 50px;
+}
+.pokemon_details_page .details-info-section .wrapper input[type=submit] {
+  color: transparent;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+.pokemon_details_page .details-info-section .wrapper input[type=submit]#add {
+  background: url("assets/plus_icon.png") no-repeat top left;
+}
+.pokemon_details_page .details-info-section .wrapper input[type=submit]#edit {
+  background: url("assets/pencil_icon.png") no-repeat top left;
+}
+.pokemon_details_page .details-info-section .wrapper input[type=submit]#delete {
+  background: url("assets/delete_icon.png") no-repeat top left;
+}
+.pokemon_details_page .details-info-section .wrapper input[type=submit]:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
