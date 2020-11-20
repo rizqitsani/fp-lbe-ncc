@@ -115,8 +115,6 @@ CREATE TABLE `training` (
 --
 -- Add to Training_ID
 --
-ALTER TABLE 'training' 
-ADD T_ID VARCHAR(10) NOT NULL PRIMARY KEY;
 
 --
 -- Table structure for table `type_defense`
@@ -155,8 +153,6 @@ ALTER TABLE `type_defense`
 --
 -- Add to BREEDINGg_ID
 --
-ALTER TABLE 'breeding' 
-ADD B_ID VARCHAR(10) NOT NULL PRIMARY KEY;
 
 --
 -- AUTO_INCREMENT for dumped tables
