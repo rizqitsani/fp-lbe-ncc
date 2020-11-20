@@ -25,7 +25,7 @@ function typeDefenseDataRow(
         <form class="info-form" method="POST" action="type_defense_process.php?id='.$id.'">
         
             <input type = hidden name = "pokemon_id" value = '.$_GET["id"].'></td>
-            <td><input name="id" type=text value="' . $id . '"></td>
+            <td>' . $id . '</td>
             <td><input name="power" type=text value="' . $Power . '"></td>
             <td><input name="point" type=text value="' . $Point . '"></td>
             <td><input type=submit name="edit-button" id="edit" value="edit"></td>

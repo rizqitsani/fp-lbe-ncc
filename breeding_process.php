@@ -26,7 +26,7 @@
     $gender = htmlspecialchars($_POST["gender"]);
     $egg_cycle = htmlspecialchars($_POST["egg_cycle"]);
 
-    mysqli_query($db, "UPDATE breeding SET egg_groups='$egg_groups', gender='$gender', egg_cycle='$egg_cycle' WHERE b_id='$id';");
+    mysqli_query($db, "UPDATE breeding SET egg_groups='$egg_groups', gender='$gender', egg_cycles='$egg_cycle' WHERE b_id='$id';");
 
     header('Location: ./index.php');
 

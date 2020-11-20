@@ -15,7 +15,7 @@ require_once './functions/config.php';
                                 where pokemon_id = {$id};");
 
     $base_stats_query = mysqli_query($db, "SELECT * FROM pokemon WHERE national_no='$id'");
-    $moves_query = mysqli_query($db, "SELECT * FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = '$id' ;");
+    $moves_query = mysqli_query($db, "SELECT moves.* FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = '$id' ;");
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves WHERE pokemon_id='$id';");
     $breeding_query = mysqli_query($db, "SELECT * FROM breeding WHERE pokemon_id='$id';");
     $training_query = mysqli_query($db, "SELECT * FROM training WHERE pokemon_id='$id';");
