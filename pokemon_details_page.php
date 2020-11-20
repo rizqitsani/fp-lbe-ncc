@@ -4,6 +4,7 @@
     include('pokemon_details_abilities.php');
     include('pokemon_details_breeding.php');
     include('pokemon_details_training.php');
+    include('pokemon_details_type_defense.php');
 
 require_once './functions/config.php';
 
@@ -12,6 +13,7 @@ require_once './functions/config.php';
     $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
     $breeding_query = mysqli_query($db, "SELECT * FROM breeding;");
     $training_query = mysqli_query($db, "SELECT * FROM training;");
+    $type_defense_query = mysqli_query($db, "SELECT * FROM type_defense;");
 ?>
 
 <!doctype html>
@@ -192,5 +194,29 @@ Details of Pokemon
     </div>
 </div>
 
+<div class="details-info-section">
+    Type Defense
+    <div class="wrapper">
+        <table>
+            <thead>
+            <td> ID</td>
+            <td> Power</td>
+            <td> point</td>
+            </thead>
+            <tbody>
+            <?php
+            while($record = mysqli_fetch_assoc($type_defense_query)) {
+                typeDefenseDataRow(
+                    $record["ID"],
+                    $record["Power"],
+                    $record["Point"]
+                );
+            }
+            ?>
+            <?php typeDefenseInputRow(); ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
