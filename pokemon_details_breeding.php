@@ -4,6 +4,7 @@ function breedingInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="breeding_process.php">
+                <td><input name="id" type=number ></td>
                 <td><input name="egg_groups" type=number ></td>
                 <td><input name="gender" type=text ></td>
                 <td><input name="egg_cycle" type=text ></td>
@@ -14,6 +15,7 @@ function breedingInputRow()
 }
 
 function breedingDataRow(
+    int $id,
     string $egg_groups,
     string $gender,
     string $egg_cycle
@@ -21,7 +23,8 @@ function breedingDataRow(
 {
     echo '
     <tr>
-        <form class="info-form" method="POST" action="breeding_process.php">
+        <form class="info-form" method="POST" action="breeding_process.php?id='.$id.'">
+            <td>' . $id . '</td>
             <td><input name="egg_groups" type=text value="' . $egg_groups . '"></td>
             <td><input name="gender" type=text value="' . $gender . '"></td>
             <td><input name="egg_cycle" type=text value="' . $egg_cycle . '"></td>

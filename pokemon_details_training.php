@@ -16,6 +16,7 @@ function trainingInputRow()
 }
 
 function trainingDataRow(
+    int $id,
     string $ev_yield,
     string $catch_rate,
     string $base_friendship,
@@ -25,7 +26,8 @@ function trainingDataRow(
 {
     echo '
     <tr>
-        <form class="info-form" method="POST" action="training_process.php">
+        <form class="info-form" method="POST" action="training_process.php?id='.$id.'">
+            <td>' . $id . '</td>
             <td><input name="ev_yield" type=text value="' . $ev_yield . '"></td>
             <td><input name="catch_rate" type=text value="' . $catch_rate . '"></td>
             <td><input name="base_friendship" type=text value="' . $base_friendship . '"></td>
