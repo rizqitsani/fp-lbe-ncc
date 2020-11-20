@@ -14,12 +14,12 @@ require_once './functions/config.php';
                                 FROM abilities 
                                 where national_no = {$id};");
     $base_stats_query = mysqli_query($db, "SELECT * FROM pokemon WHERE national_no='$id'");
-    $moves_query = mysqli_query($db, "SELECT * FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = ;");
-    $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
-    $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
-    $breeding_query = mysqli_query($db, "SELECT * FROM breeding;");
-    $training_query = mysqli_query($db, "SELECT * FROM training;");
-    $type_defense_query = mysqli_query($db, "SELECT * FROM type_defense;");
+    $moves_query = mysqli_query($db, "SELECT * FROM moves join pokemon on pokemon.id = moves.Pokemon_id where national_no = '$id' ;");
+    $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves WHERE pokemon_id='$id';");
+    $ability_query = mysqli_query($db, "SELECT * FROM abilities WHERE pokemon_id='$id';");
+    $breeding_query = mysqli_query($db, "SELECT * FROM breeding WHERE pokemon_id='$id';");
+    $training_query = mysqli_query($db, "SELECT * FROM training WHERE pokemon_id='$id';");
+    $type_defense_query = mysqli_query($db, "SELECT * FROM type_defense WHERE pokemon_id='$id';");
 ?>
 
 <!doctype html>
