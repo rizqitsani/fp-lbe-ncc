@@ -1,12 +1,13 @@
 <?php
     include('pokemon_details_moves.php');
     include('pokemon_detail_egg_moves.php');
+    include('pokemon_details_abilities.php');
 
     require_once './functions/config.php';
 
     $moves_query = mysqli_query($db, "SELECT * FROM moves;");
     $egg_moves_query = mysqli_query($db, "SELECT * FROM egg_moves;");
-
+    $ability_query = mysqli_query($db, "SELECT * FROM abilities;");
 ?>
 
 <!doctype html>
@@ -107,5 +108,31 @@ Details of Pokemon
         </table>
     </div>
 </div>
+
+<div class="details-info-section">
+    ABILITIES
+    <div class="wrapper">
+        <table>
+            <thead>
+            <td> ID</td>
+            <td> Name</td>
+            <td> Effect</td>
+            </thead>
+            <tbody>
+            <?php
+            while($record = mysqli_fetch_assoc($ability_query)) {
+                abilityDataRow(
+                    $record["ID"],
+                    $record["Move"],
+                    $record["effect"]
+                );
+            }
+            ?>
+            <?php abilitiyInputRow(); ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
