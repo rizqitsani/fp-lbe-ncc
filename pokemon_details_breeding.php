@@ -4,7 +4,7 @@ function breedingInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="breeding_process.php">
-                <td><input name="id" type=number ></td>
+                <td></td>
                 <td><input name="egg_groups" type=number ></td>
                 <td><input name="gender" type=text ></td>
                 <td><input name="egg_cycle" type=text ></td>

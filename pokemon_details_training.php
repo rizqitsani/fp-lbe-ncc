@@ -4,6 +4,7 @@ function trainingInputRow()
     echo '
         <tr>
             <form class="info-form" method="POST" action="training_process.php">
+                <td></td>
                 <td><input name="ev_yield" type=text></td>
                 <td><input name="catch_rate" type=text ></td>
                 <td><input name="base_friendship" type=text ></td>

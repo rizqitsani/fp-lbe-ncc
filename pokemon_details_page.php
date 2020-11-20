@@ -125,6 +125,7 @@ Details of Pokemon
     <div class="wrapper">
         <table>
             <thead>
+            <td> id</td>
             <td> Egg Groups</td>
             <td> Gender</td>
             <td> Egg Cycles</td>
@@ -150,6 +151,7 @@ Details of Pokemon
     <div class="wrapper">
         <table>
             <thead>
+            <td> id</td>
             <td> Ev_Yield</td>
             <td> Catch_Rate</td>
             <td> Base_Friendship</td>
