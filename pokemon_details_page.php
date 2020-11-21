@@ -57,6 +57,7 @@ Details of Pokemon
                 <div class="info-value"><?=mysqli_fetch_assoc($moves_count)["moves_count"] ?></div>
             </div>
         <?php endwhile;?>
+        <button><a href="./index.php">Kembali</a></button>
     </div>
 </div>
 

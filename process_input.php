@@ -21,6 +21,6 @@
     , '$abilities', '$health_point', '$attack', '$defense', '$speed', '$speed_attack', '$speed_defense') ;");
 
     if(mysqli_affected_rows($db)){
-      header('Location: ./pokemon_main_info_form.php');
+      header('Location: ./index.php');
     }
   }

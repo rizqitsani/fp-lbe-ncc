@@ -7,7 +7,7 @@ if(isset($_POST["search"])) {
     $keyword = mysqli_real_escape_string($db, $keyword);
     $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon WHERE name LIKE '%$keyword%' ORDER BY national_no;");
 } else{
-    $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon;");
+    $pokemon_query = mysqli_query($db, "SELECT * FROM pokemon ORDER BY national_no;");
 }
 
 function pokemonDataRow(
@@ -67,6 +67,8 @@ POKEMONS
     <input type="text" name = "keyword" placeholder = "Search Name">
     <input type = "submit" name = "search" value = "Search">
 </form>
+
+<button><a href="./pokemon_main_info_form.php">Input</a></button>
 
 <table>
     <thead>

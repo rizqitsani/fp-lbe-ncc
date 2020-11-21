@@ -28,6 +28,7 @@
         <input name="speed_defense" type="number" placeholder="DEFENSE SPEED">
     </div>
     <input type="submit" name="insert_main" value="input pokemon">
+    <button><a href="./index.php">Kembali</a></button>
 </form>
 
 </body>
