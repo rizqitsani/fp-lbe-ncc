@@ -15,7 +15,7 @@
 
     // Redirect
     if(mysqli_affected_rows($db)){
-      header('Location: ./index.php');
+      header("Location:./pokemon_details_page.php?id=".$pokemon_id);
     }
 
   }
@@ -24,6 +24,7 @@
 
     $id = $_GET["id"];
     
+    $pokemon_id = htmlspecialchars($_POST["pokemon_id"]);
     $ev_yield = htmlspecialchars($_POST["ev_yield"]);
     $catch_rate = htmlspecialchars($_POST["catch_rate"]);
     $base_friendship = htmlspecialchars($_POST["base_friendship"]);
@@ -32,15 +33,17 @@
 
     mysqli_query($db, "UPDATE training SET ev_yield='$ev_yield', catch_rate='$catch_rate', base_friendship='$base_friendship', base_exp='$base_exp', growth_rate='$growth_rate' WHERE t_id='$id';");
 
-    header('Location: ./index.php');
+    header("Location:./pokemon_details_page.php?id=".$pokemon_id);
 
   }
   
   if(isset($_POST['delete-button'])) {
 
     $id = $_GET["id"];
+
+    $pokemon_id = htmlspecialchars($_POST["pokemon_id"]);
     mysqli_query($db, "DELETE FROM training WHERE t_id = '$id';");
 
-    header('Location: ./index.php');
+    header("Location:./pokemon_details_page.php?id=".$pokemon_id);
 
   }
